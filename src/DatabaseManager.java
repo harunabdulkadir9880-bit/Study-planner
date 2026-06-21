@@ -136,6 +136,27 @@ public class DatabaseManager {
         }
     }
 
+    public static void markTaskCompleted(String title) {
+
+        String sql = "UPDATE tasks SET completed = true WHERE title = ?";
+
+        try (Connection conn = DbHelper.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, title);
+            int rowsChanged = ps.executeUpdate();
+
+            if (rowsChanged > 0) {
+                System.out.println("Task marked as completed (Database).");
+            } else {
+                System.out.println("Task not found with title: " + title);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error updating task in database: " + e.getMessage());
+        }
+    }
+
 
 
 
