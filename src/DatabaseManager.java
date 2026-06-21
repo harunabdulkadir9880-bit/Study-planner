@@ -115,4 +115,28 @@ public class DatabaseManager {
         }
     }
 
+    public static void deleteTask(String title) {
+
+        String sql = "DELETE FROM tasks WHERE title = ?";
+
+        try (Connection conn = DbHelper.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, title);
+            int rowsChanged = ps.executeUpdate();
+
+            if (rowsChanged > 0) {
+                System.out.println("Task deleted successfully (Database).");
+            } else {
+                System.out.println("Task not found with title: " + title);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting task from database: " + e.getMessage());
+        }
+    }
+
+
+
+
 }
