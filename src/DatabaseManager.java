@@ -52,5 +52,56 @@ public class DatabaseManager {
         }
     }
 
+    public static ArrayList<StudyTask> loadAllTasks() {
+
+        ArrayList<StudyTask> list = new ArrayList<StudyTask>();
+        String sql = "SELECT * FROM tasks";
+
+        try (Connection conn = DbHelper.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String type      = rs.getString("task_type");
+                String title     = rs.getString("title");
+                String dueDate   = rs.getString("due_date");
+                int priority     = rs.getInt("priority");
+                boolean completed = rs.getBoolean("completed");
+
+                StudyTask task = null;
+
+                if (type.equals("DailyTask")) {
+                    String subject = rs.getString("subject");
+                    task = new DailyTask(title, dueDate, priority, subject);
+
+                } else if (type.equals("ExamPrep")) {
+                    String examName = rs.getString("exam_name");
+                    int hours = rs.getInt("study_hours");
+                    task = new ExamPrep(title, dueDate, priority, examName, hours);
+
+                } else if (type.equals("ProjectTask")) {
+                    String members = rs.getString("group_members");
+                    int percent = rs.getInt("percent_complete");
+                    task = new ProjectTask(title, dueDate, priority, members, percent);
+                }
+
+                if (task != null) {
+                    if (completed) {
+                        task.markCompleted();
+                    }
+                    list.add(task);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error loading tasks from database: " + e.getMessage());
+        }
+
+        return list;
+    }
+
+
+
 
 }
