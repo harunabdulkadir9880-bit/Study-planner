@@ -72,6 +72,16 @@ public class BinaryFileManager {
                     task = new DailyTask(title, dueDate, priority, subject);
 
                 } 
+                 else if (type.equals("ExamPrep")) {
+                    String examName = dis.readUTF();
+                    int hours = dis.readInt();
+                    task = new ExamPrep(title, dueDate, priority, examName, hours);
+
+                } else if (type.equals("ProjectTask")) {
+                    String members = dis.readUTF();
+                    int percent = dis.readInt();
+                    task = new ProjectTask(title, dueDate, priority, members, percent);
+                }
            
 
 
