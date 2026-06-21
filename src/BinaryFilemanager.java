@@ -106,6 +106,19 @@ public class BinaryFileManager {
         saveAllTasks(list);
         System.out.println("Task added successfully (Binary File).");
     }
+    public static void displayAllTasks() {
+        ArrayList<StudyTask> list = loadAllTasks();
+
+        if (list.size() == 0) {
+            System.out.println("No tasks found in binary file.");
+            return;
+        }
+
+        System.out.println("\n===== All Tasks (Binary File) =====");
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).showDetails(); // Polymorphism happens here!
+        }
+    }
            
 
 
