@@ -9,13 +9,6 @@ public class ExamPrep extends StudyTask {
         this.examName = examName;
         this.studyHoursNeeded = studyHoursNeeded;
     }
-public class ExamPrep extends StudyTask {
-
-    String examName;     
-    int studyHoursNeeded; 
-
-
-    
 
     
     @Override
