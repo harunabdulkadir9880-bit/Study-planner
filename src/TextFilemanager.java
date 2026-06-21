@@ -121,3 +121,44 @@ public class TextFileManager {
             list.get(i).showDetails(); // Polymorphism happens here!
         }
     }
+public static void deleteTask(String title) {
+        ArrayList<StudyTask> list = loadAllTasks();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).title.equalsIgnoreCase(title)) {
+                list.remove(i);
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllTasks(list);
+            System.out.println("Task deleted successfully (Text File).");
+        } else {
+            System.out.println("Task not found with title: " + title);
+        }
+    }
+
+  
+    public static void markTaskCompleted(String title) {
+        ArrayList<StudyTask> list = loadAllTasks();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).title.equalsIgnoreCase(title)) {
+                list.get(i).markCompleted();
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllTasks(list);
+            System.out.println("Task marked as completed (Text File).");
+        } else {
+            System.out.println("Task not found with title: " + title);
+        }
+    }
+}
