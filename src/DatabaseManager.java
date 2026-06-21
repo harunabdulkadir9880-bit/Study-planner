@@ -111,10 +111,8 @@ public class DatabaseManager {
 
         System.out.println("\n===== All Tasks (Database) =====");
         for (int i = 0; i < list.size(); i++) {
-            list.get(i).showDetails();
+            list.get(i).showDetails(); // Polymorphism happens here!
         }
     }
-
-
 
 }
