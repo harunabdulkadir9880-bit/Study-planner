@@ -101,6 +101,19 @@ public class DatabaseManager {
         return list;
     }
 
+    public static void displayAllTasks() {
+        ArrayList<StudyTask> list = loadAllTasks();
+
+        if (list.size() == 0) {
+            System.out.println("No tasks found in database.");
+            return;
+        }
+
+        System.out.println("\n===== All Tasks (Database) =====");
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).showDetails();
+        }
+    }
 
 
 
