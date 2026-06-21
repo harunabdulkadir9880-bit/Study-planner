@@ -119,6 +119,18 @@ public class BinaryFileManager {
             list.get(i).showDetails(); // Polymorphism happens here!
         }
     }
+
+    public static void deleteTask(String title) {
+        ArrayList<StudyTask> list = loadAllTasks();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).title.equalsIgnoreCase(title)) {
+                list.remove(i);
+                found = true;
+                break;
+            }
+        }
            
 
 
