@@ -8,7 +8,14 @@ public class ProjectTask extends StudyTask {
         this.groupMembers = groupMembers;
         this.percentComplete = percentComplete;
     }
-    
+     @Override
+    public void showDetails() {
+        System.out.println("---- Project Task ----");
+        super.showDetails();
+        System.out.println("Group Members  : " + groupMembers);
+        System.out.println("Percent Done   : " + percentComplete + "%");
+        System.out.println("-----------------------");
+    }
 
 }
 
