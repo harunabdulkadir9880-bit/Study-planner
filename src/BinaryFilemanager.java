@@ -82,6 +82,30 @@ public class BinaryFileManager {
                     int percent = dis.readInt();
                     task = new ProjectTask(title, dueDate, priority, members, percent);
                 }
+            if (task != null) {
+                    if (completed) {
+                        task.markCompleted();
+                    }
+                    list.add(task);
+                }
+            }
+
+            dis.close();
+
+        } catch (Exception e) {
+            System.out.println("Error loading from binary file: " + e.getMessage());
+        }
+
+        return list;
+    }
+
+    
+    public static void addTask(StudyTask newTask) {
+        ArrayList<StudyTask> list = loadAllTasks();
+        list.add(newTask);
+        saveAllTasks(list);
+        System.out.println("Task added successfully (Binary File).");
+    }
            
 
 
