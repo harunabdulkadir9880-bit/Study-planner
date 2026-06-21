@@ -140,6 +140,27 @@ public class BinaryFileManager {
         }
     }
 
+    public static void markTaskCompleted(String title) {
+        ArrayList<StudyTask> list = loadAllTasks();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).title.equalsIgnoreCase(title)) {
+                list.get(i).markCompleted();
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllTasks(list);
+            System.out.println("Task marked as completed (Binary File).");
+        } else {
+            System.out.println("Task not found with title: " + title);
+        }
+    }
+}
+
            
 
 
