@@ -131,6 +131,15 @@ public class BinaryFileManager {
                 break;
             }
         }
+
+        if (found) {
+            saveAllTasks(list);
+            System.out.println("Task deleted successfully (Binary File).");
+        } else {
+            System.out.println("Task not found with title: " + title);
+        }
+    }
+
            
 
 
