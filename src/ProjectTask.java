@@ -16,6 +16,10 @@ public class ProjectTask extends StudyTask {
         System.out.println("Percent Done   : " + percentComplete + "%");
         System.out.println("-----------------------");
     }
+     @Override
+    public String getTaskType() {
+        return "ProjectTask";
+    }
 
 }
 
