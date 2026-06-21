@@ -56,6 +56,22 @@ public class BinaryFileManager {
             if (!file.exists() || file.length() == 0) {
                 return list;
             }
+        DataInputStream dis = new DataInputStream(new FileInputStream(file));
+
+            while (dis.available() > 0) {
+                String type      = dis.readUTF();
+                String title     = dis.readUTF();
+                String dueDate   = dis.readUTF();
+                int priority     = dis.readInt();
+                boolean completed = dis.readBoolean();
+
+                StudyTask task = null;
+
+                if (type.equals("DailyTask")) {
+                    String subject = dis.readUTF();
+                    task = new DailyTask(title, dueDate, priority, subject);
+
+                } 
            
 
 
