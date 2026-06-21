@@ -40,6 +40,22 @@ public class BinaryFileManager {
             }
 
             dos.close();
+            
+        } catch (Exception e) {
+            System.out.println("Error saving to binary file: " + e.getMessage());
+        }
+    }
+
+    
+    public static ArrayList<StudyTask> loadAllTasks() {
+        ArrayList<StudyTask> list = new ArrayList<StudyTask>();
+
+        try {
+            File file = new File(FileHelper.binaryFile);
+
+            if (!file.exists() || file.length() == 0) {
+                return list;
+            }
            
 
 
