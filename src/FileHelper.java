@@ -28,3 +28,8 @@ public static void setupFiles() {
     catch (Exception e) {
      System.out.println("Error setting up files: " + e.getMessage());
         }
+public static void showFileProperties(String filePath) {
+    File file = new File(filePath);
+
+    System.out.println("\n--- File Properties: " + filePath + " ---");
+}
