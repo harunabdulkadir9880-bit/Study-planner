@@ -15,3 +15,8 @@ public static void setupFiles() {
             data.mkdir();
             System.out.println("Created folder: " + dataFolder);
         }
+        File txt = new File(textFile);
+        if (!txt.exists()) {
+           txt.createNewFile();
+           System.out.println("Created file: " + textFile);
+        }
