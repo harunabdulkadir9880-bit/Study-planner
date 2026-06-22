@@ -8,3 +8,10 @@ public class FileHelper {
     public static String binaryFile = "data/tasks.dat";
     public static String objectFile = "data/tasks.obj";
 
+public static void setupFiles() {
+    try {
+        File data = new File(dataFolder);
+        if (!data.exists()) {
+            data.mkdir();
+            System.out.println("Created folder: " + dataFolder);
+        }
