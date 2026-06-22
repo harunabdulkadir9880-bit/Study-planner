@@ -25,3 +25,6 @@ public static void setupFiles() {
            dat.createNewFile();
            System.out.println("Created file: " + binaryFile);
         }
+    catch (Exception e) {
+     System.out.println("Error setting up files: " + e.getMessage());
+        }
