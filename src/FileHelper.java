@@ -20,3 +20,8 @@ public static void setupFiles() {
            txt.createNewFile();
            System.out.println("Created file: " + textFile);
         }
+        File dat = new File(binaryFile);
+        if (!dat.exists()) {
+           dat.createNewFile();
+           System.out.println("Created file: " + binaryFile);
+        }
