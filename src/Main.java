@@ -187,6 +187,25 @@ public class Main {
             System.out.println("Invalid storage type.");
         }
     }
+    static void menuMarkCompleted(Scanner scanner) {
+        System.out.println("\n--- Mark Task as Completed ---");
+        System.out.print("Enter the title of the task: ");
+        String title = scanner.nextLine().trim();
+
+        int storageType = askStorageType(scanner);
+
+        if (storageType == 1) {
+            TextFileManager.markTaskCompleted(title);
+        } else if (storageType == 2) {
+            BinaryFileManager.markTaskCompleted(title);
+        } else if (storageType == 3) {
+            ObjectFileManager.markTaskCompleted(title);
+        } else if (storageType == 4) {
+            DatabaseManager.markTaskCompleted(title);
+        } else {
+            System.out.println("Invalid storage type.");
+        }
+    }
 
 
 
