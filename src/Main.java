@@ -207,6 +207,31 @@ public class Main {
         }
     }
 
+    static void menuFileProperties(Scanner scanner) {
+        System.out.println("\nWhich file properties would you like to see?");
+        System.out.println("1. Text File");
+        System.out.println("2. Binary File");
+        System.out.println("3. Object File");
+        System.out.print("Enter choice: ");
+
+        try {
+            int pick = Integer.parseInt(scanner.nextLine().trim());
+
+            if (pick == 1) {
+                FileHelper.showFileProperties(FileHelper.textFile);
+            } else if (pick == 2) {
+                FileHelper.showFileProperties(FileHelper.binaryFile);
+            } else if (pick == 3) {
+                FileHelper.showFileProperties(FileHelper.objectFile);
+            } else {
+                System.out.println("Invalid choice.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
 
 
 
