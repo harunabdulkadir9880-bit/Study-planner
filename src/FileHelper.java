@@ -36,3 +36,20 @@ public static void showFileProperties(String filePath) {
 
     System.out.println("\n--- File Properties: " + filePath + " ---");
 }
+    public static void showFileProperties(String filePath) {
+    File file = new File(filePath);
+
+    System.out.println("\n--- File Properties: " + filePath + " ---");
+
+    if (!file.exists()) {
+        System.out.println("File does not exist.");
+        return;
+    }
+
+    System.out.println("Name          : " + file.getName());
+    System.out.println("Absolute Path : " + file.getAbsolutePath());
+    System.out.println("Size (bytes)  : " + file.length());
+    System.out.println("Last Modified : " + new Date(file.lastModified()));
+    System.out.println("------------------------------------");
+ } 
+}    
