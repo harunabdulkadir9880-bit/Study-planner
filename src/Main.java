@@ -73,5 +73,84 @@ public class Main {
             return 1;
         }
     }
+    static void menuAddTask(Scanner scanner) {
+        System.out.println("\n--- Add New Task ---");
+        System.out.println("What type of task is this?");
+        System.out.println("1. Daily Task");
+        System.out.println("2. Exam Prep");
+        System.out.println("3. Project Task");
+        System.out.print("Enter choice: ");
+
+        int taskTypeChoice;
+        try {
+            taskTypeChoice = Integer.parseInt(scanner.nextLine().trim());
+        } catch (Exception e) {
+            System.out.println("Invalid input.");
+            return;
+        }
+
+        try {
+            System.out.print("Enter Title             : ");
+            String title = scanner.nextLine().trim();
+
+            System.out.print("Enter Due Date (e.g. 2026-06-25): ");
+            String dueDate = scanner.nextLine().trim();
+
+            System.out.print("Enter Priority (1=Low, 2=Medium, 3=High): ");
+            int priority = Integer.parseInt(scanner.nextLine().trim());
+
+
+            TaskValidator.validate(title, priority);
+
+            StudyTask newTask = null;
+
+            if (taskTypeChoice == 1) {
+                System.out.print("Enter Subject           : ");
+                String subject = scanner.nextLine().trim();
+                newTask = new DailyTask(title, dueDate, priority, subject);
+
+            } else if (taskTypeChoice == 2) {
+                System.out.print("Enter Exam Name         : ");
+                String examName = scanner.nextLine().trim();
+                System.out.print("Enter Study Hours Needed: ");
+                int hours = Integer.parseInt(scanner.nextLine().trim());
+                newTask = new ExamPrep(title, dueDate, priority, examName, hours);
+
+            } else if (taskTypeChoice == 3) {
+                System.out.print("Enter Group Members      : ");
+                String members = scanner.nextLine().trim();
+                System.out.print("Enter Percent Complete (0-100): ");
+                int percent = Integer.parseInt(scanner.nextLine().trim());
+                newTask = new ProjectTask(title, dueDate, priority, members, percent);
+
+            } else {
+                System.out.println("Invalid task type.");
+                return;
+            }
+
+            int storageType = askStorageType(scanner);
+
+            if (storageType == 1) {
+                TextFileManager.addTask(newTask);
+            } else if (storageType == 2) {
+                BinaryFileManager.addTask(newTask);
+            } else if (storageType == 3) {
+                ObjectFileManager.addTask(newTask);
+            } else if (storageType == 4) {
+                DatabaseManager.addTask(newTask);
+            } else {
+                System.out.println("Invalid storage type.");
+            }
+
+        } catch (InvalidtaskException e) {
+            System.out.println("Could not add task: " + e.getMessage());
+        } catch (NumberFormatException e) {
+
+            System.out.println("Please enter numbers where required (priority, hours, percent).");
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+    }
+
 
 }
