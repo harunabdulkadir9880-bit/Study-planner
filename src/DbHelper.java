@@ -7,7 +7,7 @@ public class DbHelper {
 
     public static String host     = "127.0.0.1";
     public static String port     = "3306";
-    public static String dbName   = "study planner database";
+    public static String dbName   = "study_planner_db";
     public static String username = "root";
     public static String password = "Slim2026@";
 
