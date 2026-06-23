@@ -58,5 +58,20 @@ public class Main {
         System.out.println("                            ");
         System.out.print("Enter your choice: ");
     }
+    static int askStorageType(Scanner scanner) {
+        System.out.println("\nChoose storage type:");
+        System.out.println("1. Text File");
+        System.out.println("2. Binary File");
+        System.out.println("3. Object File (Serialization)");
+        System.out.println("4. Database (JDBC / MySQL)");
+        System.out.print("Enter choice: ");
+
+        try {
+            return Integer.parseInt(scanner.nextLine().trim());
+        } catch (Exception e) {
+            System.out.println("Invalid input. Defaulting to text file.");
+            return 1;
+        }
+    }
 
 }
