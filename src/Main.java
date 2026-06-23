@@ -168,5 +168,26 @@ public class Main {
         }
     }
 
+    static void menuDeleteTask(Scanner scanner) {
+        System.out.println("\n--- Delete Task ---");
+        System.out.print("Enter the title of the task to delete: ");
+        String title = scanner.nextLine().trim();
+
+        int storageType = askStorageType(scanner);
+
+        if (storageType == 1) {
+            TextFileManager.deleteTask(title);
+        } else if (storageType == 2) {
+            BinaryFileManager.deleteTask(title);
+        } else if (storageType == 3) {
+            ObjectFileManager.deleteTask(title);
+        } else if (storageType == 4) {
+            DatabaseManager.deleteTask(title);
+        } else {
+            System.out.println("Invalid storage type.");
+        }
+    }
+
+
 
 }
