@@ -152,5 +152,21 @@ public class Main {
         }
     }
 
+    static void menuDisplayAllTasks(Scanner scanner) {
+        int storageType = askStorageType(scanner);
+
+        if (storageType == 1) {
+            TextFileManager.displayAllTasks();
+        } else if (storageType == 2) {
+            BinaryFileManager.displayAllTasks();
+        } else if (storageType == 3) {
+            ObjectFileManager.displayAllTasks();
+        } else if (storageType == 4) {
+            DatabaseManager.displayAllTasks();
+        } else {
+            System.out.println("Invalid storage type.");
+        }
+    }
+
 
 }
