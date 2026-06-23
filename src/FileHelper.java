@@ -1,4 +1,5 @@
 import java.io.File;
+
 import java.util.Date;
 
 public class FileHelper {
@@ -17,17 +18,19 @@ public static void setupFiles() {
         }
         File txt = new File(textFile);
         if (!txt.exists()) {
-           txt.createNewFile();
-           System.out.println("Created file: " + textFile);
+            txt.createNewFile();
+            System.out.println("Created file: " + textFile);
         }
         File dat = new File(binaryFile);
         if (!dat.exists()) {
-           dat.createNewFile();
-           System.out.println("Created file: " + binaryFile);
+            dat.createNewFile();
+            System.out.println("Created file: " + binaryFile);
         }
-    catch (Exception e) {
-     System.out.println("Error setting up files: " + e.getMessage());
+      catch(Exception e){
+            System.out.println("Error setting up files: " + e.getMessage());
         }
+    }
+
 public static void showFileProperties(String filePath) {
     File file = new File(filePath);
 
